@@ -1,0 +1,77 @@
+<head>
+    <meta name="viewport" content="width=1080, height=1920, initial-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+          width: 1080px;
+          height: 1920px;
+          background-color: #000000;
+          color: inherit;
+          font-family: "MoMA Sans", Helvetica, Arial, sans-serif;
+          font-kerning: normal;
+          text-align: center;
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          margin: 0;
+          line-height: normal;
+        }
+        header, footer {
+          position: absolute;
+          width: 100%;
+          transform: translateX(-50%);
+        }
+        header {
+          top: 0%;
+          left: 50%;
+        }
+        footer {
+          bottom: 0%;
+          left: 50%;
+        }
+        header span, footer span {
+          color: #FFFFFF;
+          font-size: 100px;
+        }
+        #clock {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          color: #FFFFFF;
+          font-size: 100px;
+          transform: translate(-50%, -50%);
+        }
+    </style>
+    <script>
+        // Calling showTime function at every second
+        setInterval(showClock, 1000);
+      
+        function showClock(){
+      
+          const time = new Date();
+          // Pull hours, minutes, and seconds from a Date object and add it to our new object
+          // AM/PM is not needed currently
+          let hour = time.getHours();
+          let minutes = time.getMinutes();
+          let seconds = time.getSeconds();
+      
+          const currentTime = 
+                // if hour is less than 10 add a preceding 0 before it
+                (hour < 10 ? '0' + hour : hour) + 
+                ":" + (minutes < 10 ? "0" + minutes : minutes) + 
+                ":" + (seconds < 10 ? "0" + seconds : seconds);
+          // Render the clock
+          document.getElementById('clock').innerHTML = currentTime;
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <span>THE CLOCK</span>
+    </header>
+    <div id="clock"></div> 
+    <footer>
+        <span>
+            CHRISTIAN MARCLAY
+        </span>
+    </footer>
+</body>
